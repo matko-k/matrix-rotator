@@ -40,6 +40,11 @@ export function rotateMatrix(matrix: number[][], times: number): number[][] {
 }
 
 export function rotateArray(arr: number[], times: number): number[] {
+
+  if (!isPerfectSquare(arr.length)) {
+    return [];
+  }
+
   const n = Math.sqrt(arr.length);
   const matrix: number[][] = [];
 
@@ -53,5 +58,5 @@ export function rotateArray(arr: number[], times: number): number[] {
 
 export function isPerfectSquare(n: number): boolean {
   const sqrt = Math.sqrt(n);
-  return Number.isInteger(sqrt);
+  return Number.isInteger(sqrt) && sqrt > 0;
 }

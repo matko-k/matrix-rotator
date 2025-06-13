@@ -1,6 +1,8 @@
 import { createCsvReader } from './reader';
 import { createCsvWriter } from './writer';
 import { isPerfectSquare, rotateArray } from './processor';
+import path from 'path';
+import fs from 'fs';
 
 function formatJsonArray(arr: any[]): string {
   return JSON.stringify(arr); // always quoted, even for [] and [123]
@@ -12,7 +14,15 @@ function main() {
   const rotateBy = isNaN(rotationArg) ? 1 : rotationArg;
 
   if (!inputFile) {
-    console.error('Usage: node cli.js input.csv [rotateBy] > output.csv');
+    console.error('Usage Error: node cli.js input.csv [rotateBy] > output.csv');
+    process.exit(1);
+  }
+  
+
+  const inputFilePath = path.resolve(process.cwd(), inputFile);
+
+  if (!fs.existsSync(inputFilePath)) {
+    console.error(`Error: Input file "${inputFile}" does not exist.`);
     process.exit(1);
   }
 

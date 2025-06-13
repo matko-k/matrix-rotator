@@ -1,4 +1,4 @@
-# CSV Rotate CLI Tool
+# Matrix Rotation CLI Tool
 
 A Node.js command-line tool to read a CSV file containing IDs and JSON arrays, validate if the arrays form square matrices, rotate these matrices by multiples of 90° (right or left), and output the results as CSV.
 
@@ -13,6 +13,7 @@ A Node.js command-line tool to read a CSV file containing IDs and JSON arrays, v
 - Proper quoting of JSON arrays, including empty and single-element arrays
 - Uses streaming CSV libraries (`csv-stream` for reading, `fast-csv` for writing)
 - Handles errors gracefully and logs messages on failure
+- Test suite for rotation logic (framework `jest`)
 
 ---
 
@@ -23,7 +24,7 @@ A Node.js command-line tool to read a CSV file containing IDs and JSON arrays, v
 
 ---
 
-## Installation
+## Installation & Building
 
 Clone the repo and install dependencies:
 
@@ -31,6 +32,7 @@ Clone the repo and install dependencies:
 git clone <repo-url>
 cd <repo-folder>
 npm install
+tsc
 ```
 
 ---
@@ -38,7 +40,7 @@ npm install
 ## Usage
 
 ```bash
-node main.js <input.csv> [rotate_by] > output.csv
+node cli.js <input.csv> [rotate_by] > output.csv
 ```
 
 - <input.csv>: Path to the CSV file to process
@@ -51,22 +53,22 @@ node main.js <input.csv> [rotate_by] > output.csv
 ## Examples
 Rotate matrices 90° right (default):
 ```bash
-node main.js input.csv > output.csv
+node cli.js input.csv > output.csv
 ```
 
 Rotate matrices 180° right (rotate twice):
 ```bash
-node main.js input.csv 2 > output.csv
+node cli.js input.csv 2 > output.csv
 ```
 
 Rotate matrices 90° left (rotate once to the left):
 ```bash
-node main.js input.csv -1 > output.csv
+node cli.js input.csv -1 > output.csv
 ```
 
 Handle missing file error (will print error to stderr):
 ```bash
-node main.js missing.csv > output.csv
+node cli.js missing.csv > output.csv
 ```
 
 Input CSV Format

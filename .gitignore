@@ -7,6 +7,8 @@
 *.js
 .env
 
+output.csv
+
 .vscode/
 .vscode/*
 
