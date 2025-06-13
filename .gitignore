@@ -1,0 +1,17 @@
+/node_modules/
+
+/dist/
+/build/
+/out/
+
+*.js
+.env
+
+.vscode/
+.vscode/*
+
+.idea/
+*.iml
+*.iws
+out/
+.npm/
